@@ -20,9 +20,11 @@ from selenium.webdriver.support import expected_conditions as EC
 # driver.find_element(By.XPATH, '/html/body/div[2]/div[3]/div[12]/button[2]').click() = 무신사 홈페이지의 남성 카테고리 Selector
 #######################################
 driver = webdriver.Chrome('./chromedriver')
-URL = 'https://www.musinsa.com/categories/item/003?d_cat_cd=003&brand=&list_kind=small&sort=pop_category&sub_sort=&page=1&display_cnt=90&group_sale=&exclusive_yn=&sale_goods=&timesale_yn=&ex_soldout=&kids=&color=&price1=&price2=&shoeSizeOption=&tags=&campaign_id=&includeKeywords=&measure=measure_5%5E110%5E120'
-driver.get(URL)
-driver.find_element(By.XPATH, '/html/body/div[2]/div[3]/div[12]/button[2]').click()
+
+def run_crawling():
+    URL = 'https://www.musinsa.com/categories/item/003?d_cat_cd=003&brand=&list_kind=small&sort=pop_category&sub_sort=&page=1&display_cnt=90&group_sale=&exclusive_yn=&sale_goods=&timesale_yn=&ex_soldout=&kids=&color=&price1=&price2=&shoeSizeOption=&tags=&campaign_id=&includeKeywords=&measure=measure_5%5E110%5E120'
+    driver.get(URL)
+    driver.find_element(By.XPATH, '/html/body/div[2]/div[3]/div[12]/button[2]').click()
 
 def get_goods_list():
     goods_location = driver.find_elements(By.CSS_SELECTOR, '#goods_list > div.boxed-list-wrapper > div.list-box.box > #searchList > li')
@@ -105,17 +107,22 @@ def get_goods_total_url_list():
 # args ->
 # driver.get(goods_url) = 해당 url 로 chrome driver 가 이동
 # temp_goods_detail_info = 상품별 info 를 2차원 배열(total_goods_detail_info_list) 에 담기위한 임시 List
-#
+# 예외처리를 통해 Crawling 도중 오류가 발생하면 현재까지 저장한 리스트 반환
 #######################################
 def get_total_goods_detail_info(goods_total_url_list):
     goods_detail_info_list = []
     for goods_url in goods_total_url_list:
-        driver.get(goods_url)
+        try:
+            driver.get(goods_url)
 
-        goods_img_url = get_goods_img_url()
-        goods_category = get_goods_category()
-        goods_brand = get_goods_brand()
-        
-        temp_goods_detail_info = [goods_url, goods_img_url, goods_category, goods_brand]
-        goods_detail_info_list.append(temp_goods_detail_info)
+            goods_img_url = get_goods_img_url()
+            goods_category = get_goods_category()
+            goods_brand = get_goods_brand()
+            
+            temp_goods_detail_info = [goods_url, goods_img_url, goods_category, goods_brand]
+            goods_detail_info_list.append(temp_goods_detail_info)
+        except:
+            driver.close()
+            return goods_detail_info_list
+    driver.close()
     return goods_detail_info_list
