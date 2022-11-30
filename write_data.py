@@ -114,10 +114,10 @@ def import_data():
 
     table_name = 'articles_article'
     for goods in goods_list:
-        goods_url, goods_img_url, goods_category, goods_brand = goods
-        fields_value = (goods_url, goods_img_url, goods_brand, goods_category)
+        goods_title, goods_price, goods_url, goods_img_url, goods_category, goods_brand = goods
+        fields_value = (goods_title, goods_price, goods_url, goods_img_url, goods_brand, goods_category)
 
-        cursor.execute(f'INSERT INTO {table_name} (goods_url, goods_img_url, goods_brand, goods_category) VALUES (?, ?, ?, ?)',
+        cursor.execute(f'INSERT INTO {table_name} (goods_title, goods_price, goods_url, goods_img_url, goods_brand, goods_category) VALUES (?, ?, ?, ?, ?, ?)',
             fields_value
         )
         db.commit()
