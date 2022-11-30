@@ -53,7 +53,7 @@ def write_category():
     goods_list = list(f)
     category_set = set()
     for goods in goods_list:
-        category = goods[2]
+        category = goods[4]
         category_set.add(category)
 
     category_list = [
@@ -78,7 +78,7 @@ def write_brand():
     goods_list = list(f)
     brand_set = set()
     for goods in goods_list:
-        brand = goods[3]
+        brand = goods[5]
         brand_set.add(brand)
 
     brand_list = [
