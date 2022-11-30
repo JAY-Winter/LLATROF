@@ -19,7 +19,7 @@ from articles import views as articles_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', articles_views.index),
+    path('', articles_views.articles_list),
     path('articles/', include('articles.urls')),
     path('accounts/', include('accounts.urls')),
 ]
