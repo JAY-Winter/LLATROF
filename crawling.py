@@ -1,6 +1,8 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.support.ui import WebDriverWait
+from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.support import expected_conditions as EC
 
 # Hide Chrome Options
@@ -19,9 +21,9 @@ from selenium.webdriver.support import expected_conditions as EC
 # URL = driver 가 최초로 이동하는 url
 # driver.find_element(By.XPATH, '/html/body/div[2]/div[3]/div[12]/button[2]').click() = 무신사 홈페이지의 남성 카테고리 Selector
 #######################################
-driver = webdriver.Chrome('./chromedriver')
-
 def run_crawling():
+    chrome_options = webdriver.ChromeOptions()
+    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
     URL = 'https://www.musinsa.com/categories/item/003?d_cat_cd=003&brand=&list_kind=small&sort=pop_category&sub_sort=&page=1&display_cnt=90&group_sale=&exclusive_yn=&sale_goods=&timesale_yn=&ex_soldout=&kids=&color=&price1=&price2=&shoeSizeOption=&tags=&campaign_id=&includeKeywords=&measure=measure_5%5E110%5E120'
     driver.get(URL)
     driver.find_element(By.XPATH, '/html/body/div[2]/div[3]/div[12]/button[2]').click()
@@ -34,6 +36,17 @@ def get_goods_url(goods):
     get_goods_url = goods.find_element(By.CSS_SELECTOR, f'div.li_inner > div.list_img > a')
     goods_url = get_goods_url.get_attribute('href')
     return goods_url
+
+def get_goods_title():
+    get_goods_title_url = driver.find_element(By.CSS_SELECTOR, '#page_product_detail > div.right_area.page_detail_product > div.right_contents.section_product_summary > span > em')
+    goods_title = get_goods_title_url.text
+    return goods_title
+
+def get_goods_price():
+    get_goods_price_url = driver.find_element(By.CSS_SELECTOR,'#product_order_info > div.explan_product.price_info_section > ul > li:nth-child(2) > p.product_article_contents > span.product_article_price')
+    goods_price = get_goods_price_url.text
+    goods_price = int(''.join(goods_price[:-1].split(',')))
+    return goods_price
 
 def get_goods_img_url():
     get_goods_img_url = driver.find_element(By.CSS_SELECTOR, '#detail_bigimg > .product-img > img')
@@ -114,13 +127,16 @@ def get_total_goods_detail_info(goods_total_url_list):
     for goods_url in goods_total_url_list:
         try:
             driver.get(goods_url)
-
+            
+            goods_title = get_goods_title()
+            goods_price  = get_goods_price()
             goods_img_url = get_goods_img_url()
             goods_category = get_goods_category()
             goods_brand = get_goods_brand()
-            
-            temp_goods_detail_info = [goods_url, goods_img_url, goods_category, goods_brand]
+
+            temp_goods_detail_info = [goods_title, goods_price, goods_url, goods_img_url, goods_category, goods_brand]
             goods_detail_info_list.append(temp_goods_detail_info)
+            
         except:
             driver.close()
             return goods_detail_info_list
