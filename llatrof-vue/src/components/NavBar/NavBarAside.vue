@@ -6,8 +6,16 @@
       </a>
       <router-link @click.native="closeAside" :to="{ name: 'mainpage' }">Main</router-link>
       <router-link @click.native="closeAside" :to="{ name: 'test' }">TestPage</router-link>
+      <div style="">
       <a>CATEGORY</a>
-      <a>BRAND</a>
+        <router-link @click.native="closeAside" :to="{ name: 'category', params: {categoryName: '데님'} }">데님</router-link>
+        <router-link @click.native="closeAside" :to="{ name: 'category', params: {categoryName: '코튼'}  }">코튼</router-link>
+        <router-link @click.native="closeAside" :to="{ name: 'category', params: {categoryName: '숏'}  }">숏</router-link>
+        <router-link @click.native="closeAside" :to="{ name: 'category', params: {categoryName: '점프'}  }">점프</router-link>
+        <router-link @click.native="closeAside" :to="{ name: 'category', params: {categoryName: '슈트'}  }">슈트</router-link>
+        <router-link @click.native="closeAside" :to="{ name: 'category', params: {categoryName: '트레이닝'}  }">트레이닝</router-link>
+        <router-link @click.native="closeAside" :to="{ name: 'category', params: {categoryName: '기타'}  }">기타</router-link>
+      </div>
       
     </div>
     <!-- 오버레이 -->
@@ -15,7 +23,7 @@
     </div>
     <!-- 아이콘 -->
     <a href="#" @click.prevent>
-    <i class="bi bi-list" style="font-size: 2rem; color: white;" id="sideMain" ref="sideMain" @click="openAside" ></i></a>
+    <i class="bi bi-list" style="font-size: 1.5rem; color: white;" id="sideMain" ref="sideMain" @click="openAside" ></i></a>
     <!-- <button class="btn btn-dark" id="sideMain" ref="sideMain" @click="openAside" >
       Menu
     </button> -->
@@ -90,7 +98,7 @@ export default {
 
 #sideMain {
   transition: margin-left 0.5s;
-  padding: 10px;
+  
   z-index: -1;
 }
 

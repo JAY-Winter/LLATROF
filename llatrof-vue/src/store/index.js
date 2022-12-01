@@ -52,7 +52,7 @@ export default new Vuex.Store({
         url: `${API_URL}/articles/api/articles_list/`
       })
         .then((res) => {
-          context.commit('GET_ARTICLES', res.data.slice(0, 10))
+          context.commit('GET_ARTICLES', res.data)
         })
         .catch((error) => console.log(error))
     }
