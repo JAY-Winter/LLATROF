@@ -5,7 +5,7 @@
         </div>
         <router-link :to="{ name: 'mainpage' }" class="navbar-brnad">LLATROF</router-link>
         <div id="navbar_right" class="nav navbar-nav navbar-right">
-        <li><a href='#' @click.prevent><i class="bi bi-search" style="font-size: 1.5rem; color: white;"></i></a></li>
+        <li><a href='#' @click.prevent><i class="bi bi-search" style="font-size: 1.2rem; color: white;"></i></a></li>
         </div>
     </nav>
 </template>
@@ -26,12 +26,12 @@ export default {
 <style>
 
 #navbar {
-  background-color: #333; 
+  background-color: black; 
   position: fixed; 
   display: flex;
   top: 0; 
   width: 100%;
-  height: 70px; 
+  height: 50px; 
   transition: top 0.3s; /* Transition effect when sliding down (and up) */
 }
 
@@ -45,7 +45,7 @@ export default {
 }
 
 .navbar-brnad {
-  font-size: 2rem;
+  font-size: 1.4rem;
 }
 
 /* #navbar a:hover {
@@ -58,11 +58,10 @@ export default {
 }
 
 #navbar_left {
-    padding-left: 10px;
 }
 
 #navbar_right {
-    padding-right: 10px;
+    
 }
 
 .navbar-brand {

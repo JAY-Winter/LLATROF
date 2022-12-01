@@ -1,24 +1,36 @@
 <template>
   <div id="app">
     <!-- 최상단에 고정하기 위해서 fixed-top -->
-    <NavBar class="fixed-top"/>
-    <router-view class="container" style="margin-top: 5rem;"/>
-    <Footer />
+    <OpeningAnimation/>
+    <NavBar class="fixed-top" v-if="showAll"/>
+    <router-view style="margin-top: 60px;" v-if="showAll"/>
+    <Footer v-if="showAll"/>
   </div>
 </template>
 
 <script>
 import NavBar from '@/components/NavBar/NavBar.vue'
 import Footer from '@/components/Footer/Footer.vue'
+import OpeningAnimation from '@/components/Open/OpeningAnimation'
 
 export default ({
   name: 'App',
+  data() {
+    return {
+      showAll: false,
+      showAni: true
+    }
+  },
   components: {
     NavBar,
     Footer,
+    OpeningAnimation,
   },
   created() {
-    this.$store.dispatch('getArticles')
+    // this.$store.dispatch('getArticles')
+    setTimeout(() => {
+      this.showAll = true
+    }, 4500)
   }
 })
 // 네브바와 푸터 두군데서 코드 중복이 이루어져서
@@ -29,11 +41,11 @@ window.onscroll = function() {
     var currentScrollPos = window.pageYOffset;
     if (prevScrollpos > currentScrollPos) {
         document.getElementById("navbar").style.top = "0";
-        document.getElementById("dropdown-dropup").style.bottom = "0";
+        // document.getElementById("dropdown-dropup").style.bottom = "0";
         document.getElementById("svg").style.bottom = "0";
     } else {
         document.getElementById("navbar").style.top = "-100px";
-        document.getElementById("dropdown-dropup").style.bottom = "-100px";
+        // document.getElementById("dropdown-dropup").style.bottom = "-100px";
         document.getElementById("svg").style.bottom = "-100px";
     }
     prevScrollpos = currentScrollPos;
@@ -42,9 +54,6 @@ window.onscroll = function() {
 
 <!-- 스코프를 사용하면 전역이 아니라 현재vue만 적용 -->
 <style>
-body {
-  background-color: black;
-}
 /* 스크롤바 숨김 */
 body::-webkit-scrollbar{
   display: none;
