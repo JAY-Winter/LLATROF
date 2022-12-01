@@ -49,7 +49,7 @@ export default new Vuex.Store({
     getArticles(context) {
       axios({
         method: 'get',
-        url: `${API_URL}/articles/api/articles_list/`
+        url: `${API_URL}/articles`
       })
         .then((res) => {
           context.commit('GET_ARTICLES', res.data)
