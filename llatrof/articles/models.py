@@ -9,6 +9,8 @@ class Brand(models.Model):
     brand = models.TextField(unique=True)
 
 class Article(models.Model):
+    goods_title = models.TextField()
+    goods_price = models.IntegerField()
     goods_url = models.TextField()
     goods_img_url = models.TextField()
     goods_category = models.ForeignKey(
