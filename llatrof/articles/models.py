@@ -9,6 +9,8 @@ class Brand(models.Model):
     brand = models.TextField(unique=True)
 
 class Article(models.Model):
+    goods_title = models.TextField()
+    goods_price = models.IntegerField()
     goods_url = models.TextField()
     goods_img_url = models.TextField()
     goods_category = models.ForeignKey(
@@ -22,4 +24,11 @@ class Article(models.Model):
         on_delete=models.CASCADE,
         db_column='goods_brand',
         to_field='brand',
+    )
+
+class RecommendArticle(models.Model):
+    goods = models.ForeignKey(
+        Article,
+        on_delete=models.CASCADE,
+        null=True
     )

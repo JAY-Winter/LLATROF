@@ -1,16 +1,35 @@
-from django.shortcuts import render
+from .models import Article, Category, Brand
+from .serializers import ArticleListSerializer, CategoryListSerializer, BrandListSerializer
+
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .models import Article
-from .serializers import ArticleListSerializer
 
-# Create your views here.
-def index(request):
-    articles = Article.objects.all()
-    context = {
-        'articles': articles,
-    }
-    return render(request, 'articles/index.html', context)
+#######################################
+#
+# by. JaeHyeon (22/1O/26)
+# articles_list = Serializing Article Records
+#
+# args ->
+# sort   = None / ascending / descending
+# router = None / category / brand
+# params = None / category_name / brand_name
+#
+#######################################
+@api_view(['GET'])
+def articles_list(request, sort=None, router=None, params=None):
+    if sort:
+        if router == 'category':
+            articles = Article.objects.filter(goods_category=params)
+        elif router == 'brand':
+            articles = Article.objects.filter(goods_brand=params)
+        if sort == 'ascending':
+            articles = articles.order_by('goods_price')
+        elif sort == 'descending':
+            articles = articles.order_by('goods_price').reverse()
+    else:
+        articles = Article.objects.all()
+    serializer = ArticleListSerializer(articles, many=True)
+    return Response(serializer.data)
 
 #######################################
 #
@@ -21,18 +40,11 @@ def index(request):
 # category_list = goods_category 만 분류한 List
 #
 #######################################
+@api_view(['GET'])
 def category(request):
-    categorise = Article.objects.values('goods_category').distinct()
-
-    category_list = []
-    for category in categorise:
-        category = category['goods_category']
-        category_list.append(category)
-
-    context = {
-        'category_list': category_list,
-    }
-    return render(request, 'articles/category.html', context)
+    categories = Category.objects.all()
+    serializer = CategoryListSerializer(categories, many=True)
+    return Response(serializer.data)
 
 #######################################
 #
@@ -42,13 +54,11 @@ def category(request):
 # goods_list = Article Table 내 goods_category 기준으로 variable routing 을 통해 받은 category(:str) 를 filtering 한 QuerySetList
 #
 #######################################
+@api_view(['GET'])
 def category_goods(request, category):
     goods_list = Article.objects.all().filter(goods_category=category)
-    
-    context = {
-        'goods_list': goods_list,
-    }
-    return render(request, 'articles/category.html', context)
+    serializer = ArticleListSerializer(goods_list, many=True)
+    return Response(serializer.data)
 
 #######################################
 #
@@ -59,16 +69,11 @@ def category_goods(request, category):
 # brands_list = goods_brand 만 분류한 List
 #
 #######################################
+@api_view(['GET'])
 def brand(request):
-    brands = Article.objects.values('goods_brand').distinct()
-    brands_list = []
-    for brand in brands:
-        brand = brand['goods_brand']
-        brands_list.append(brand)
-    context = {
-        'brands_list': brands_list,
-    }
-    return render(request, 'articles/brand.html', context)
+    brands = Brand.objects.all()
+    serialzier = BrandListSerializer(brands, many=True)
+    return Response(serialzier.data)
 
 #######################################
 #
@@ -78,22 +83,8 @@ def brand(request):
 # goods_list = Article Table 내 goods_brand 기준으로 variable routing 을 통해 받은 brand(:str) 를 filtering 한 QuerySetList
 #
 #######################################
+@api_view(['GET'])
 def brand_goods(request, brand):
     goods_list = Article.objects.all().filter(goods_brand=brand)
-    
-    context = {
-        'goods_list': goods_list,
-    }
-    return render(request, 'articles/brand.html', context)
-
-#######################################
-#
-# by. JaeHyeon (22/1O/26)
-# articles_list = Serializing Article Records
-#
-#######################################
-@api_view(['GET'])
-def articles_list(request):
-    articles = Article.objects.all()
-    serializer = ArticleListSerializer(articles, many=True)
-    return Response(serializer.data)
+    seriazlier = ArticleListSerializer(goods_list, many=True)
+    return Response(seriazlier.data)
