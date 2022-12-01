@@ -1,29 +1,33 @@
 <template>
   <div class="container d-flex overflow-hidden" ref="viewport">
     <div class="row d-flex flex-nowrap " id="horizontalScroll" ref="content">
-        <MainPageCartegotyCard 
+        <!-- <MainPageCartegotyCard 
             v-for="sub in cartegory"
             :key="sub.title"
             :cartegoryInfo = sub
             class="m-2"
-        />
+        /> -->
+        <MainPageCategoryButton />
     </div>
   </div>
 </template>
 
 <script>
-import MainPageCartegotyCard from '@/components/MainPage/MainPageCartegotyCard.vue'
+// import MainPageCartegotyCard from '@/components/MainPage/MainPageCartegotyCard.vue'
 // https://github.com/ilyashubin/scrollbooster
 import ScrollBooster from 'scrollbooster';
+import MainPageCategoryButton from '@/components/MainPage/MainPageCategoryButton'
 
 export default {
     name: 'MainPageHorizontalscroll',
     components: {
-        MainPageCartegotyCard
+        // MainPageCartegotyCard,
+        MainPageCategoryButton
     },
     data() {
         return {
-            cartegory: this.$store.state.cartegory,
+            cartegory: ['데님', '코튼', '숏', '점프', '슈트', '트레이닝', '기타'],
+            scrollB: null,
         }
     },
     computed: {

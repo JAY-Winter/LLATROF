@@ -11,14 +11,14 @@
       </ul>
     </div> -->
 
-    <b-dropdown id="dropdown-dropup" dropup text="MENU" variant="outline-dark" class="m-1" :class="{ 'navbar--hidden': !showNavbar }">
+    <!-- <b-dropdown id="dropdown-dropup" dropup text="MENU" variant="outline-dark" class="m-1" :class="{ 'navbar--hidden': !showNavbar }">
       <b-dropdown-item href="#">Action</b-dropdown-item>
       <b-dropdown-item href="#">Another action</b-dropdown-item>
       <b-dropdown-item href="#">Something else here</b-dropdown-item>
       <b-dropdown-item href="#">Another action</b-dropdown-item>
       <b-dropdown-item href="#">Something else here</b-dropdown-item>
-    </b-dropdown>
-    <!-- onScorll함수는 어디에...? -->
+    </b-dropdown> -->
+    
     <svg id="svg" xmlns="http://www.w3.org/2000/svg" width="25" height="26" fill="currentColor" class="bi bi-chevron-up mb-3" viewBox="0 0 16 16" @click="scrollToTop">
       <path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"/>
     </svg>
@@ -62,6 +62,7 @@ svg {
   transition:top 0.3s;
 }
 #dropdown-dropup {
+  background-color: black;
   position:fixed;
   left:2px;
   bottom:1px;
