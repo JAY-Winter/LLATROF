@@ -1,7 +1,7 @@
 <template>
-    <div style="text-align: center; font-size: 2rem;">
+    <div style="text-align: center; font-size: 1.5rem;" class="container">
         {{ $route.params.categoryName }}
-        <hr>
+        <hr style="margin-top: 5px">
         <div class="container">
             <div class="row">
                 <MainPageGoodsCard 
@@ -50,7 +50,7 @@ export default {
         getCategory() {
             axios({
             method: 'get',
-            url: `https://whatyoulookingat.club/articles/category/${this.categoryN}`
+            url: `https://whatyoulookingat.club/articles/category/${this.categoryN}/`
             })
             .then(res => {
                 this.goods = res.data
