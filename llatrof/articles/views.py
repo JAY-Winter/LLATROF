@@ -1,5 +1,5 @@
-from .models import Article, Category, Brand
-from .serializers import ArticleListSerializer, CategoryListSerializer, BrandListSerializer
+from .models import Article, Category, Brand, RecommendArticle
+from .serializers import ArticleListSerializer, CategoryListSerializer, BrandListSerializer, RecommendArticleListSerializer
 
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -88,3 +88,9 @@ def brand_goods(request, brand):
     goods_list = Article.objects.all().filter(goods_brand=brand)
     seriazlier = ArticleListSerializer(goods_list, many=True)
     return Response(seriazlier.data)
+
+@api_view(['GET'])
+def liamspick(request):
+    goods_list = RecommendArticle.objects.all()
+    serializer = RecommendArticleListSerializer(goods_list, many=True)
+    return Response(serializer.data)
