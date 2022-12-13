@@ -22,12 +22,9 @@ export default {
 </script>
 
 <style scoped>
-    @import url('https://fonts.googleapis.com/css2?family=Hahmlet:wght@800&display=swap');
-    body {
-        margin: 0;
-    }
     .logo {
         position: fixed;
+        top: 0;
         font-family: 'Hahmlet', serif;
         color: white;
         background-color: black;
@@ -41,7 +38,7 @@ export default {
         animation: uppp 0.5s;
         animation-delay: 4s;
         animation-fill-mode: forwards;
-        z-index: 99;
+        z-index: 2000;
     }
     @keyframes uppp {
         to {
@@ -56,6 +53,7 @@ export default {
     #F1 {
         animation: f1 4S;
         animation-fill-mode: forwards;
+        margin-right: 10px;
     }
     @keyframes f1 {
         from {
@@ -72,15 +70,16 @@ export default {
             transform: translate(50vw, 30vh) rotate(540deg);
         }
         80% {
-            transform: translateX(14.4rem);
+            transform: translateX(17.5rem);
         }
         to {
-            transform: translateX(14.4rem);
+            transform: translateX(17.5rem);
         }
     }
     #O1 {
         animation: o1 4S;
         animation-fill-mode: forwards;
+        margin-right: 10px;
     }
     @keyframes o1 {
         from {
@@ -97,15 +96,16 @@ export default {
             transform: translate(-10vw, -40vh) rotate(-600deg);
         }
         80% {
-            transform: translateX(9.3rem);
+            transform: translateX(11.8rem);
         }
         to {
-            transform: translateX(9.3rem);
+            transform: translateX(11.8rem);
         }
     }
     #R1 {
         animation: r1 4S;
         animation-fill-mode: forwards;
+        margin-right: 30px
     }
     @keyframes r1 {
         from {
@@ -122,15 +122,16 @@ export default {
             transform: translate(10vw, -30vh) rotate(450deg);
         }
         80% {
-            transform: translateX(4.1rem);
+            transform: translateX(5.7rem);
         }
         to {
-            transform: translateX(4.1rem);
+            transform: translateX(5.7rem);
         }
     }
     #T1 {
         animation: t1 4S;
         animation-fill-mode: forwards;
+        margin-right: 10px;
     }
     @keyframes t1 {
         from {
@@ -147,15 +148,16 @@ export default {
             transform: translate(-10vw, 40vh) rotate(-530deg);
         }
         80% {
-            transform: translateX(-0.6rem);
+            transform: translateX(-1.8rem);
         }
         to {
-            transform: translateX(-0.6rem);
+            transform: translateX(-1.8rem);
         }
     }
     #A1 {
         animation: a1 4S;
         animation-fill-mode: forwards;
+        margin-right: 10px;
     }
     @keyframes a1 {
         from {
@@ -172,15 +174,16 @@ export default {
             transform: translate(-20vw, -10vh) rotate(-480deg);;
         }
         80% {
-            transform: translateX(-5.4rem);
+            transform: translateX(-7.2rem);
         }
         to {
-            transform: translateX(-5.4rem);
+            transform: translateX(-7.2rem);
         }
     }
     #L1 {
         animation: l1 4S;
         animation-fill-mode: forwards;
+        margin-right: 10px;
     }
     @keyframes l1 {
         from {
@@ -197,15 +200,16 @@ export default {
             transform: translate(-50vw, 20vh) rotate(-610deg);;
         }
         80% {
-            transform: translateX(-10.2rem);
+            transform: translateX(-12.5rem);
         }
         to {
-            transform: translateX(-10.2rem);
+            transform: translateX(-12.5rem);
         }
     }
     #L2 {
         animation: l2 4S;
         animation-fill-mode: forwards;
+        margin-right: 10px;
     }
     @keyframes l2 {
         from {
@@ -222,10 +226,10 @@ export default {
             transform: translate(-10vw, -30vh) rotate(492deg);;
         }
         80% {
-            transform: translateX(-14.6rem);
+            transform: translateX(-17.2rem);
         }
         to {
-            transform: translateX(-14.6rem);
+            transform: translateX(-17.2rem);
         }
     }
 </style>

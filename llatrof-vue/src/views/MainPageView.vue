@@ -17,14 +17,14 @@ export default {
     },
     data() {
         return {
-            cartegory: this.$store.state.cartegory
+            cartegory: this.$store.state.cartegory,
         }
     },
     computed: {
         goods() {
             return this.$store.state.articles
         }
-    }
+    },
 }
 </script>
 

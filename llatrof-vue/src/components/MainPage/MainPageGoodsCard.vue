@@ -25,33 +25,35 @@ export default {
 
 <style scoped>
 #card {
-  width: 300px;
-  color: black;
-  text-align: initial;
-  font-size: 17px;
-  padding: 0;
+width: 300px;
+color: black;
+text-align: initial;
+font-size: 17px;
+padding: 0;
 }
 
-.card-img {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
 .img-in-card {
-  object-fit: cover;
-  width: 100%;
-  height: 200px;
+object-fit: cover;
+width: 100%;
+height: 250px;
+}
+
+@media (min-width: 800px) {
+.img-in-card {
+object-fit: cover;
+width: 100%;
+height: 700px;
+}
 }
 
 .router-brand {
-  text-decoration-line: none;
-  color: black;
+text-decoration-line: none;
+color: black;
 }
 
 .router-brand:hover {
-  text-decoration-line: none;
-  color: black;
+text-decoration-line: none;
+color: black;
 }
 </style>
