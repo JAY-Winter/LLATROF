@@ -50,7 +50,7 @@ export default {
         getCategory() {
             axios({
             method: 'get',
-            url: `https://whatyoulookingat.club/articles/brand/${this.brandN}/`
+            url: `https://whatyoulookingat.club/articles/brand/${this.brandN}`
             })
             .then(res => {
                 this.goods = res.data
