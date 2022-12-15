@@ -10,7 +10,7 @@
           :good="good"
         />
       </div>
-      <infinite-loading @infinite="infiniteHandler"></infinite-loading>
+      <!-- <infinite-loading @infinite="infiniteHandler"></infinite-loading> -->
       <div class="row d-flex justify-content-center pb-4">
         <span
           @click="morePage"
@@ -25,13 +25,13 @@
 <script>
 import MainPageGoodsCard from "@/components/MainPage/MainPageGoodsCard";
 import axios from "axios";
-import InfiniteLoading from "vue-infinite-loading";
+// import InfiniteLoading from "vue-infinite-loading";
 
 export default {
   name: "CategoryPageView",
   components: {
     MainPageGoodsCard,
-    InfiniteLoading,
+    // InfiniteLoading,
   },
   data() {
     return {
@@ -63,16 +63,16 @@ export default {
         })
         .catch((err) => console.log(err));
     },
-    async infiniteHandler($state) {
-      if (this.presentPage !== this.maxPage) {
-        await setTimeout(() => {
-          this.presentPage += 1;
-          $state.loaded();
-        }, 1000);
-      } else {
-        $state.complete();
-      }
-    },
+    // async infiniteHandler($state) {
+    //   if (this.presentPage <= this.maxPage) {
+    //     await setTimeout(() => {
+    //       this.presentPage += 1;
+    //       $state.loaded();
+    //     }, 1000);
+    //   } else {
+    //     $state.complete();
+    //   }
+    // },
   },
   created() {
     this.getCategory();
@@ -85,6 +85,7 @@ export default {
   },
   beforeRouteUpdate(to, from, next) {
     this.categoryN = to.params.categoryName;
+   
     next();
   },
 };
