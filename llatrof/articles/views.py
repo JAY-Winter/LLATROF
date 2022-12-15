@@ -1,8 +1,13 @@
 from .models import Article, Category, Brand, RecommendArticle
-from .serializers import ArticleListSerializer, CategoryListSerializer, BrandListSerializer, RecommendArticleListSerializer
+from .serializers import ArticleListSerializer, CategoryListSerializer, BrandListSerializer, RecommendArticleListSerializer, BrandArticlesListSerializer, CategoryArticleListSerializer
 
-from rest_framework.decorators import api_view
+from django.db.models import Q
+from urllib.parse import unquote
+
+from rest_framework import status
 from rest_framework.response import Response
+from rest_framework.decorators import api_view
+
 
 #######################################
 #
@@ -30,6 +35,17 @@ def articles_list(request, sort=None, router=None, params=None):
         articles = Article.objects.all()
     serializer = ArticleListSerializer(articles, many=True)
     return Response(serializer.data)
+
+@api_view(['POST'])
+def article(request, article_id):
+    article = Article.objects.get(id=article_id)
+    if request.method == 'POST':
+        serializer = ArticleListSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(status=status.HTTP_201_CREATED)
+
+
 
 #######################################
 #
@@ -93,4 +109,19 @@ def brand_goods(request, brand):
 def liamspick(request):
     goods_list = RecommendArticle.objects.all()
     serializer = RecommendArticleListSerializer(goods_list, many=True)
+    return Response(serializer.data)
+
+#######################################
+#
+# by. JaeHyeon (22/12/16)
+# search_keyword = varialbe routing params 기준으로 Article records 검색
+# args ->
+# articles = Q 객체를 이용한 Article Object 관리
+#
+#######################################
+@api_view(['GET'])
+def search_keyword(request, search_keyword):
+    search_keyword = unquote(search_keyword)
+    articles = Article.objects.filter(Q(goods_title__contains=search_keyword) | Q(goods_category__category__contains=search_keyword) | Q(goods_brand__brand__contains=search_keyword))
+    serializer = ArticleListSerializer(articles, many=True)
     return Response(serializer.data)
