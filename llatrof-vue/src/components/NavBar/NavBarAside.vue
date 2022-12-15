@@ -38,31 +38,11 @@
       <br />
       <div>
         <div class="brand-nav">
-          <p>황</p>
-          <p>규</p>
-          <p>형</p>
-          <p>이</p>
-          <p>만</p>
-          <p>드</p>
-          <p>는</p>
-          <p>제</p>
-          <p>품</p>
-          <p>페</p>
-          <p>이</p>
-          <p>지</p>
-          <p>데님</p>
-          <p>데님</p>
-          <p>데님</p>
-          <p>데님</p>
-          <p>데님</p>
-          <p>데님</p>
-          <p>데님</p>
-          <p>데님</p>
-          <p>데님</p>
-          <p>데님</p>
-          <p>데님</p>
-          <p>데님</p>
-          <p>데님</p>
+          <p v-for="brand in brands" :key="brand.id">
+            <router-link 
+            @click.native="closeAside"
+            :to="{ name: 'brand', params: { brandName: brand.brand } }">{{ brand.brand }}</router-link>
+          </p>
         </div>
       </div>
     </div>
@@ -78,7 +58,6 @@
         @click="openAside"
       ></i
     ></a>
-
     <!-- <button class="btn btn-dark" id="sideMain" ref="sideMain" @click="openAside" >
 Menu
 </button> -->
@@ -86,27 +65,47 @@ Menu
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   name: "NavBarAside",
   data() {
     return {
       btnClicked: false,
+      brands : []
     };
   },
   methods: {
     openAside() {
       this.btnClicked = true;
       this.$refs.mySidenav.style.width = "250px";
-      document.documentElement.style.overflow = "hidden";
       // this.$refs.sideMain.style.marginLeft = '250px'
     },
 
     closeAside() {
       this.btnClicked = false;
       this.$refs.mySidenav.style.width = "0";
-      document.documentElement.style.overflow = "";
       // this.$refs.sideMain.style.marginLeft = '0'
     },
+
+    getBrand() {
+        axios({
+        method: 'get',
+        url: `https://whatyoulookingat.club/articles/brand`
+        })
+        .then(res => {
+            this.brands = res.data
+            this.brands.sort(function (a, b) {
+              if (a.brand > b.brand) return 1;
+              else if (b.brand > a.brand) return -1;
+              else return 0;
+          });
+        })
+        .catch(err => console.log(err))
+    }
+  },
+  created() {
+    this.getBrand()
   },
 };
 </script>
@@ -179,7 +178,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: start;
-  height: 50vh;
+  height: 70vh;
   width: 250px;
   flex-wrap: nowrap;
   overflow: auto;
