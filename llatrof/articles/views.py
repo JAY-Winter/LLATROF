@@ -1,5 +1,5 @@
 from .models import Article, Category, Brand, RecommendArticle
-from .serializers import ArticleListSerializer, CategoryListSerializer, BrandListSerializer, RecommendArticleListSerializer, BrandArticlesListSerializer, CategoryArticleListSerializer
+from .serializers import ArticleListSerializer, CategoryListSerializer, BrandListSerializer, RecommendArticleListSerializer
 
 from django.db.models import Q
 from urllib.parse import unquote
