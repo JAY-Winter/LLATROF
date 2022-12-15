@@ -10,18 +10,18 @@
       indicators
     >
       <b-carousel-slide
-        caption="First slide">
+        caption="">
         <template #img>
           <img
             id="carousel-img"
             class="d-block img-fluid w-100"
-            src="https://pbs.twimg.com/media/DLvkgHvU8AA5bzt.jpg"
+            src="https://ifh.cc/g/gdHJRO.png"
             alt="image slot"
           >
         </template>
       </b-carousel-slide>
 
-      <b-carousel-slide
+      <!-- <b-carousel-slide
         caption="Second slide">
         <template #img>
           <img
@@ -43,7 +43,7 @@
             alt="image slot"
           >
         </template>
-      </b-carousel-slide>
+      </b-carousel-slide> -->
 
     </b-carousel>
   </div>
