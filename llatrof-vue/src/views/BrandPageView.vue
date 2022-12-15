@@ -62,7 +62,7 @@ export default {
         this.getCategory()
     },
     watch: {
-      categoryN () {
+      brandN () {
         this.presentPage = 1
         this.getCategory()
       }
