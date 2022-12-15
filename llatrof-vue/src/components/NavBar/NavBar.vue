@@ -5,7 +5,7 @@
         </div>
         <router-link :to="{ name: 'mainpage' }" class="navbar-brnad">LLATROF</router-link>
         <div id="navbar_right" class="nav navbar-nav navbar-right">
-        <li><a href='#' @click.prevent><i class="bi bi-search" style="font-size: 1.2rem; color: white;"></i></a></li>
+        <li><a href='#' @click.prevent><i class="bi bi-search" style="font-size: 1.2rem; color: black;"></i></a></li>
         </div>
     </nav>
 </template>

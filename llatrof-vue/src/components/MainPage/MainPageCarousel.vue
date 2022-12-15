@@ -62,9 +62,8 @@ export default {
   align-content: center;
 }
 #carousel-img {
-  height: 50vw !important;
+  height: 50vh !important;
   object-fit: cover;
   object-position: top;
-  border-radius: 10px;
 }
 </style>

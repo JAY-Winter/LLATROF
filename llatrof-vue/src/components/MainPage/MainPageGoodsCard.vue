@@ -8,7 +8,7 @@
       <!-- <p><small>{{ good.goods_brand }}</small></p> -->
       <router-link :to="{ name: 'brand', params: { brandName: good.goods_brand } }" class="router-brand"><p><small>{{ good.goods_brand }}</small></p></router-link>
       <a :href="good.goods_url" target="_blank" class="router-brand"><strong>{{ good.goods_title }}</strong></a>
-      <p>{{ good.goods_price }}원</p>
+      <p>{{ good.goods_price | comma() }}원</p>
     </div>
   </div>
 </template>
@@ -18,6 +18,11 @@ export default {
     name: 'MainPageGoodsCard',
     props: {
         good: Object,
+    },
+    filters: {
+      comma: function(val) {
+      return String(Math.round(val)).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    },
     }
 }
 </script>
@@ -25,33 +30,35 @@ export default {
 
 <style scoped>
 #card {
-  width: 300px;
-  color: black;
-  text-align: initial;
-  font-size: 17px;
-  padding: 0;
+width: 300px;
+color: black;
+text-align: initial;
+font-size: 17px;
+padding: 0;
 }
 
-.card-img {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
 .img-in-card {
-  object-fit: cover;
-  width: 100%;
-  height: 200px;
+object-fit: cover;
+width: 100%;
+height: 250px;
+}
+
+@media (min-width: 800px) {
+.img-in-card {
+object-fit: cover;
+width: 100%;
+height: 700px;
+}
 }
 
 .router-brand {
-  text-decoration-line: none;
-  color: black;
+text-decoration-line: none;
+color: black;
 }
 
 .router-brand:hover {
-  text-decoration-line: none;
-  color: black;
+text-decoration-line: none;
+color: black;
 }
 </style>
