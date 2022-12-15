@@ -51,8 +51,17 @@
     </div>
     <!-- 오버레이 -->
     <div class="overlay" v-show="btnClicked" @click="closeAside"></div>
+    <div class="overlay" v-show="btnClicked" @click="closeAside"></div>
     <!-- 아이콘 -->
     <a href="#" @click.prevent>
+      <i
+        class="bi bi-list"
+        style="font-size: 1.5rem; color: white"
+        id="sideMain"
+        ref="sideMain"
+        @click="openAside"
+      ></i
+    ></a>
       <i
         class="bi bi-list"
         style="font-size: 1.5rem; color: white"
@@ -68,6 +77,8 @@ Menu
 </template>
 
 <script>
+import axios from 'axios'
+
 import axios from 'axios'
 
 export default {
@@ -141,6 +152,7 @@ export default {
   text-decoration: none;
   color: #818181;
   display: flex;
+  display: flex;
   transition: 0.3s;
   z-index: 1;
 }
@@ -159,6 +171,7 @@ export default {
 
 #sideMain {
   transition: margin-left 0.5s;
+
 
   z-index: -1;
 }
@@ -215,3 +228,4 @@ export default {
   align-items: start;
 }
 </style>
+

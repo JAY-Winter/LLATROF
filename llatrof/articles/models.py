@@ -25,3 +25,10 @@ class Article(models.Model):
         db_column='goods_brand',
         to_field='brand',
     )
+
+class RecommendArticle(models.Model):
+    goods = models.ForeignKey(
+        Article,
+        on_delete=models.CASCADE,
+        null=True
+    )

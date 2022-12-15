@@ -57,13 +57,10 @@
   <style>
   #inner_div{
   color: black;
-  background-color: rgba(169, 165, 165, 0.2);
-  margin: 5px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  border-radius: 5px;
-  justify-content: center;
-  font-size: 1.1rem;
-  }
-  </style>
+  font-size: 3rem;
+  border-radius: 10%;
+  text-align: center;
+  border: 1px black solid;
+  margin: 3 0 0 0;
+}
+</style>

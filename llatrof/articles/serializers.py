@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Article, Category, Brand
+from .models import Article, Category, Brand, RecommendArticle
 
 
 class ArticleListSerializer(serializers.ModelSerializer):
@@ -18,4 +18,11 @@ class BrandListSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Brand
+        fields = '__all__'
+
+class RecommendArticleListSerializer(serializers.ModelSerializer):
+    goods = ArticleListSerializer()
+    
+    class Meta:
+        model = RecommendArticle
         fields = '__all__'

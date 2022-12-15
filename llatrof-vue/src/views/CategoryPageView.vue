@@ -26,6 +26,9 @@
 import MainPageGoodsCard from "@/components/MainPage/MainPageGoodsCard";
 import axios from "axios";
 import InfiniteLoading from "vue-infinite-loading";
+import MainPageGoodsCard from "@/components/MainPage/MainPageGoodsCard";
+import axios from "axios";
+import InfiniteLoading from "vue-infinite-loading";
 
 export default {
   name: "CategoryPageView",
@@ -95,4 +98,5 @@ export default {
 };
 </script>
 
+<style scoped></style>
 <style scoped></style>

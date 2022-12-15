@@ -3,8 +3,8 @@
       <MainPageCarousel />
       <MainPageHorizontalscroll />
        <div style="font-size: 1.5rem;" class="container">
-          <h4 class="pb-1 pt-4">LLATROF's PICK</h4>
-          <div class="container" style="text-align: center;">
+          <h4 class="py-3 pt-5">LLATROF's PICK</h4>
+          <div class="container" style="text-align: center; ">
               <div class="row">
                   <MainPageGoodsCard 
                       v-for="good in liamspick"
