@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container pt-4">
     <MainPageCategoryButton />
   </div>
 </template>
