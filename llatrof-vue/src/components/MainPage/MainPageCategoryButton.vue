@@ -17,7 +17,7 @@
       <div>
         <router-link
         @click.native="closeAside"
-        :to="{ name: 'category', params: { categoryName: '슈트' } }"
+        :to="{ name: 'category', params: { categoryName: '슬랙스' } }"
         ><div id="inner_div">SLACKS</div></router-link
         >
         </div>
@@ -31,7 +31,7 @@
       <div>
         <router-link
         @click.native="closeAside"
-        :to="{ name: 'category', params: { categoryName: '숏' } }"
+        :to="{ name: 'category', params: { categoryName: '쇼츠' } }"
         ><div id="inner_div">SHORTS</div></router-link
         >
       </div>

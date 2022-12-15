@@ -6,7 +6,7 @@
       </a>
       <a><b>CATEGORY</b></a>
       <br />
-      <div style="">
+      <div class="category-nav">
         <router-link
           @click.native="closeAside"
           :to="{ name: 'category', params: { categoryName: '데님' } }"
@@ -19,13 +19,18 @@
         >
         <router-link
           @click.native="closeAside"
-          :to="{ name: 'category', params: { categoryName: '슈트' } }"
+          :to="{ name: 'category', params: { categoryName: '슬랙스' } }"
           >슬랙스</router-link
         >
         <router-link
           @click.native="closeAside"
           :to="{ name: 'category', params: { categoryName: '트레이닝' } }"
           >트레이닝</router-link
+        >
+        <router-link
+          @click.native="closeAside"
+          :to="{ name: 'category', params: { categoryName: '쇼츠' } }"
+          >쇼츠</router-link
         >
         <router-link
           @click.native="closeAside"
@@ -178,13 +183,15 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: start;
-  height: 70vh;
+  height: 40vh;
   width: 250px;
   flex-wrap: nowrap;
   overflow: auto;
   color: white;
-  padding-left: 35px;
   background-color: #111;
+}
+.brand-nav > p {
+  margin: 0px;
 }
 .brand-nav::-webkit-scrollbar {
   display: block;
@@ -196,5 +203,10 @@ export default {
 .brand-nav::-webkit-scrollbar-thumb {
   background: #aaa;
   border-radius: 10px;
+}
+.category-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
 }
 </style>
