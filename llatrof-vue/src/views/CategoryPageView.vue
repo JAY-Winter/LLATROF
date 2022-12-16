@@ -85,8 +85,8 @@ export default {
   },
   beforeRouteUpdate(to, from, next) {
     this.categoryN = to.params.categoryName;
-   
     next();
+    window.scrollTo(0,0)
   },
 };
 </script>
